@@ -301,6 +301,20 @@
     color: #a78bfa;
 }
 
+.project-links {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.project-link-secondary {
+    color: var(--text-secondary);
+}
+
+.project-link-secondary:hover {
+    color: var(--text-primary);
+}
+
 /* --- Filter Bar --- */
 .filter-bar {
     display: flex;
