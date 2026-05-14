@@ -12,6 +12,15 @@ const PROJECTS = [
     github: 'https://github.com/SilasN33/QG_APP',
     demo: 'https://qg-app-rosy.vercel.app',
   },
+  {
+    title: 'Moto Entrega',
+    desc: 'App de gestão de entregas para restaurantes: a loja cria pedidos, motoboys puxam da fila, confirmam com foto e recebem relatório mensal automático.',
+    tags: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind CSS', 'PWA'],
+    category: 'saas',
+    icon: '🛵',
+    github: 'https://github.com/SilasN33/app-moto-entrega',
+    demo: '',
+  },
 ];
 
 export function renderProjects() {
@@ -47,7 +56,7 @@ function renderProjectCards() {
         ${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}
       </div>
       <div class="project-links">
-        <a href="${p.demo}" target="_blank" rel="noopener noreferrer" class="project-link">Ver Demo →</a>
+        ${p.demo ? `<a href="${p.demo}" target="_blank" rel="noopener noreferrer" class="project-link">Ver Demo →</a>` : ''}
         <a href="${p.github}" target="_blank" rel="noopener noreferrer" class="project-link project-link-secondary">GitHub →</a>
       </div>
     </div>
