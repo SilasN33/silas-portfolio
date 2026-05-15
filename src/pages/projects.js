@@ -4,15 +4,6 @@
 
 const PROJECTS = [
   {
-    title: 'QG APP',
-    desc: 'Micro-SaaS para organizar campeonatos de tênis entre amigos. Gerenciamento de torneios, chaves, resultados e ranking em tempo real.',
-    tags: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind CSS'],
-    category: 'saas',
-    icon: '🎾',
-    github: 'https://github.com/SilasN33/QG_APP',
-    demo: 'https://qg-app-rosy.vercel.app',
-  },
-  {
     title: 'Moto Entrega',
     desc: 'App de gestão de entregas para restaurantes: a loja cria pedidos, motoboys puxam da fila, confirmam com foto e recebem relatório mensal automático.',
     tags: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind CSS', 'PWA'],
@@ -20,6 +11,15 @@ const PROJECTS = [
     icon: '🛵',
     github: 'https://github.com/SilasN33/app-moto-entrega',
     demo: '',
+  },
+  {
+    title: 'QG APP',
+    desc: 'Micro-SaaS para organizar campeonatos de tênis entre amigos. Gerenciamento de torneios, chaves, resultados e ranking em tempo real.',
+    tags: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind CSS'],
+    category: 'saas',
+    icon: '🎾',
+    github: 'https://github.com/SilasN33/QG_APP',
+    demo: 'https://qg-app-rosy.vercel.app',
   },
 ];
 
