@@ -2,6 +2,8 @@
 // HOME PAGE
 // ============================================
 
+import { mountSkillsPreview, unmountSkillsPreview } from '../components/skills/previewMount.jsx';
+
 export function renderHome() {
   return `
     <div class="page-enter">
@@ -90,11 +92,9 @@ export function renderHome() {
           <div class="section-header">
             <p class="section-label reveal">O Que Eu Faço</p>
             <h2 class="section-title reveal">Principais <span class="gradient-text">Competências</span></h2>
-            <p class="section-subtitle reveal">Especializado em construir sistemas de dados robustos e soluções com IA</p>
+            <p class="section-subtitle reveal">5 áreas que dominam meu dia a dia — clique para abrir o radar completo</p>
           </div>
-          <div class="skills-grid">
-            ${renderSkillPreviewCards()}
-          </div>
+          <div id="skills-preview-react-root" class="reveal" aria-label="Principais competências"></div>
         </div>
       </section>
 
@@ -150,23 +150,14 @@ export function renderHome() {
   `;
 }
 
-function renderSkillPreviewCards() {
-  const skills = [
-    { icon: '⚙️', title: 'Engenharia Backend', desc: 'Node.js, Express, Python, FastAPI — construindo sistemas server-side robustos e APIs' },
-    { icon: '🎨', title: 'Desenvolvimento Frontend', desc: 'React, TypeScript — criando interfaces modernas e responsivas' },
-    { icon: '🗄️', title: 'Engenharia de Dados', desc: 'PostgreSQL, pipelines ETL, transformações de dados e plataformas analíticas' },
-    { icon: '🤖', title: 'Automação', desc: 'Automação com Python, sistemas de workflow, integrações de API e bots' },
-    { icon: '🧠', title: 'Desenvolvimento IA', desc: 'Integrações com LLM, agentes de automação, ferramentas assistidas por IA e inteligência de dados' },
-    { icon: '☁️', title: 'Infraestrutura', desc: 'Prisma ORM, arquitetura de APIs, design de sistemas e fundamentos de DevOps' },
-  ];
+export function initHome() {
+  const el = document.getElementById('skills-preview-react-root');
+  if (!el) return;
+  mountSkillsPreview(el);
 
-  return skills.map((s, i) => `
-    <div class="glass-card skill-card reveal reveal-delay-${i % 4 + 1}">
-      <div class="skill-card-header">
-        <div class="icon-box">${s.icon}</div>
-        <h3 class="skill-card-title">${s.title}</h3>
-      </div>
-      <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">${s.desc}</p>
-    </div>
-  `).join('');
+  const cleanup = () => {
+    unmountSkillsPreview();
+    window.removeEventListener('hashchange', cleanup);
+  };
+  window.addEventListener('hashchange', cleanup);
 }

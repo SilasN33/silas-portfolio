@@ -5,7 +5,7 @@
 import { renderNavbar, initNavbar, updateNavActive } from './components/navbar.js';
 import { renderFooter } from './components/footer.js';
 import { initParticles } from './components/particles.js';
-import { renderHome } from './pages/home.js';
+import { renderHome, initHome } from './pages/home.js';
 import { renderAbout } from './pages/about.js';
 import { renderProjects, initProjects } from './pages/projects.js';
 import { renderSkills, initSkills } from './pages/skills.js';
@@ -13,7 +13,7 @@ import { renderContact, initContact } from './pages/contact.js';
 
 // --- Route Definitions ---
 const routes = {
-  '#/': { render: renderHome, init: null, title: 'Silas Neto — Engenheiro de Software AI' },
+  '#/': { render: renderHome, init: initHome, title: 'Silas Neto — Engenheiro de Software AI' },
   '#/about': { render: renderAbout, init: null, title: 'Sobre — Silas Neto' },
   '#/projects': { render: renderProjects, init: initProjects, title: 'Projetos — Silas Neto' },
   '#/skills': { render: renderSkills, init: initSkills, title: 'Habilidades — Silas Neto' },

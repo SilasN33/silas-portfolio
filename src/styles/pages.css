@@ -1177,3 +1177,254 @@
         transition: none;
     }
 }
+
+/* ============================================
+   COMPETENCIES BENTO — Home preview
+   ============================================ */
+
+#skills-preview-react-root {
+    width: 100%;
+}
+
+.competencies-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+}
+
+.competency-card {
+    --card-accent: #a78bfa;
+    --card-soft: rgba(167, 139, 250, 0.18);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 28px;
+    min-height: 240px;
+    text-align: left;
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.competency-card.span-6 {
+    grid-column: span 6;
+    min-height: 280px;
+}
+
+.competency-card.span-4 {
+    grid-column: span 4;
+}
+
+.competency-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-lg);
+    background: radial-gradient(circle at 80% 0%, var(--card-soft), transparent 55%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.competency-card:hover {
+    border-color: var(--card-accent);
+    background: var(--bg-card-hover);
+    box-shadow: 0 0 32px var(--card-soft);
+}
+
+.competency-card:hover::after {
+    opacity: 1;
+}
+
+.competency-card:focus-visible {
+    outline: 2px solid var(--card-accent);
+    outline-offset: 3px;
+}
+
+.competency-card-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 0%;
+    background: linear-gradient(90deg, transparent, var(--card-accent), transparent);
+    transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+}
+
+.competency-card:hover .competency-card-line {
+    width: 100%;
+}
+
+.competency-card-head {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    z-index: 1;
+}
+
+.competency-card-glyph {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-md);
+    background: var(--card-soft);
+    border: 1px solid var(--card-accent);
+    color: var(--card-accent);
+    flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.competency-card:hover .competency-card-glyph {
+    transform: rotate(-6deg) scale(1.05);
+}
+
+.competency-card-score {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+    font-variant-numeric: tabular-nums;
+    color: var(--card-accent);
+}
+
+.competency-card-score-value {
+    font-size: 1.6rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.5px;
+}
+
+.competency-card-score-suffix {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.competency-card-body {
+    position: relative;
+    flex: 1;
+    z-index: 1;
+}
+
+.competency-card-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+    letter-spacing: -0.3px;
+}
+
+.competency-card.span-6 .competency-card-title {
+    font-size: 1.55rem;
+}
+
+.competency-card-summary {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    margin: 0;
+}
+
+.competency-card-chips {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    z-index: 1;
+}
+
+.competency-card-chip {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-full);
+    transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.competency-card:hover .competency-card-chip {
+    color: var(--text-primary);
+    border-color: var(--card-accent);
+}
+
+.competency-card-footer {
+    position: relative;
+    z-index: 1;
+}
+
+.competency-card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--card-accent);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.competency-card-cta svg {
+    transition: transform 0.3s ease;
+}
+
+.competency-card:hover .competency-card-cta svg {
+    transform: translateX(4px);
+}
+
+/* --- Responsive --- */
+@media (max-width: 960px) {
+    .competencies-grid {
+        gap: 16px;
+    }
+
+    .competency-card.span-6 {
+        grid-column: span 12;
+        min-height: 220px;
+    }
+
+    .competency-card.span-4 {
+        grid-column: span 6;
+    }
+}
+
+@media (max-width: 600px) {
+    .competencies-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .competency-card,
+    .competency-card.span-6,
+    .competency-card.span-4 {
+        grid-column: span 1;
+        min-height: 0;
+        padding: 24px;
+    }
+
+    .competency-card-title,
+    .competency-card.span-6 .competency-card-title {
+        font-size: 1.25rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .competency-card,
+    .competency-card-glyph,
+    .competency-card-line,
+    .competency-card-cta svg {
+        transition: none;
+    }
+}
