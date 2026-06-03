@@ -1,0 +1,38 @@
+export const PROCESS_STEPS = [
+  {
+    id: 'discovery',
+    number: '01',
+    tag: 'Discovery',
+    title: 'Análise do Problema',
+    desc: 'Entender requisitos, identificar restrições e definir métricas de sucesso antes de escrever qualquer código.',
+    accent: '#a78bfa',
+    accentSoft: 'rgba(167, 139, 250, 0.18)',
+  },
+  {
+    id: 'design',
+    number: '02',
+    tag: 'Architecture',
+    title: 'Design do Sistema',
+    desc: 'Planejamento da arquitetura, modelagem de dados, contratos de API e seleção de tecnologias alinhadas aos objetivos.',
+    accent: '#60a5fa',
+    accentSoft: 'rgba(96, 165, 250, 0.18)',
+  },
+  {
+    id: 'build',
+    number: '03',
+    tag: 'Build',
+    title: 'Implementação',
+    desc: 'Práticas de código limpo, desenvolvimento iterativo, testes automatizados e integração CI/CD.',
+    accent: '#34d399',
+    accentSoft: 'rgba(52, 211, 153, 0.18)',
+  },
+  {
+    id: 'scale',
+    number: '04',
+    tag: 'Scale',
+    title: 'Otimização',
+    desc: 'Análise de performance, estratégias de escalabilidade, setup de monitoramento e melhoria contínua.',
+    accent: '#fbbf24',
+    accentSoft: 'rgba(251, 191, 36, 0.18)',
+  },
+];

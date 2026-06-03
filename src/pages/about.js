@@ -2,6 +2,8 @@
 // ABOUT PAGE
 // ============================================
 
+import { mountProcess, unmountProcess } from '../components/process/processMount.jsx';
+
 export function renderAbout() {
   return `
     <div class="page-enter" style="padding-top: 100px;">
@@ -133,30 +135,21 @@ export function renderAbout() {
             <h2 class="section-title reveal">Processo de <span class="gradient-text">Engenharia</span></h2>
             <p class="section-subtitle reveal">Uma abordagem sistemática para construir sistemas confiáveis e escaláveis</p>
           </div>
-          <div class="process-grid">
-            <div class="glass-card process-step reveal" style="text-align: center; padding: 32px 24px;">
-              <div class="icon-box" style="margin: 0 auto 16px; font-size: 1.8rem; width: 64px; height: 64px;">🔍</div>
-              <h3 class="process-step-title">Análise do Problema</h3>
-              <p class="process-step-desc">Entender requisitos, identificar restrições e definir métricas de sucesso antes de escrever qualquer código</p>
-            </div>
-            <div class="glass-card process-step reveal reveal-delay-1" style="text-align: center; padding: 32px 24px;">
-              <div class="icon-box" style="margin: 0 auto 16px; font-size: 1.8rem; width: 64px; height: 64px;">📐</div>
-              <h3 class="process-step-title">Design do Sistema</h3>
-              <p class="process-step-desc">Planejamento da arquitetura, modelagem de dados, contratos de API e seleção de tecnologias alinhadas aos objetivos</p>
-            </div>
-            <div class="glass-card process-step reveal reveal-delay-2" style="text-align: center; padding: 32px 24px;">
-              <div class="icon-box" style="margin: 0 auto 16px; font-size: 1.8rem; width: 64px; height: 64px;">💻</div>
-              <h3 class="process-step-title">Implementação</h3>
-              <p class="process-step-desc">Práticas de código limpo, desenvolvimento iterativo, testes automatizados e integração CI/CD</p>
-            </div>
-            <div class="glass-card process-step reveal reveal-delay-3" style="text-align: center; padding: 32px 24px;">
-              <div class="icon-box" style="margin: 0 auto 16px; font-size: 1.8rem; width: 64px; height: 64px;">🚀</div>
-              <h3 class="process-step-title">Otimização</h3>
-              <p class="process-step-desc">Análise de performance, estratégias de escalabilidade, setup de monitoramento e melhoria contínua</p>
-            </div>
-          </div>
+          <div id="process-react-root" class="reveal" aria-label="Pipeline do processo de engenharia"></div>
         </div>
       </section>
     </div>
   `;
+}
+
+export function initAbout() {
+  const el = document.getElementById('process-react-root');
+  if (!el) return;
+  mountProcess(el);
+
+  const cleanup = () => {
+    unmountProcess();
+    window.removeEventListener('hashchange', cleanup);
+  };
+  window.addEventListener('hashchange', cleanup);
 }
