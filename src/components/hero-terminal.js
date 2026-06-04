@@ -3,8 +3,8 @@
 // ============================================
 
 const COMMANDS = {
-  help:     { out: 'comandos: about · projects · skills · crypto · contact · clear · whoami' },
-  whoami:   { out: 'silas neto · engenheiro de software ai · dados × automação × cripto' },
+  help:     { out: 'comandos: about · projects · skills · contact · clear · whoami' },
+  whoami:   { out: 'silas neto · profissional de implementações de ai · dados × automação' },
   about:    { route: '#/about',    out: '→ abrindo about.md...' },
   projects: { route: '#/projects', out: '→ abrindo projects.tsx...' },
   skills:   { route: '#/skills',   out: '→ abrindo skills.json...' },
@@ -15,9 +15,9 @@ const COMMANDS = {
 const INTRO_LINES = [
   { type: 'code', text: '<span class="syn-key">const</span> <span class="syn-fn">engenheiro</span> <span class="syn-punct">=</span> <span class="syn-punct">{</span>' },
   { type: 'code', text: '  nome<span class="syn-punct">:</span> <span class="syn-str">"Silas Neto"</span><span class="syn-punct">,</span>' },
-  { type: 'code', text: '  cargo<span class="syn-punct">:</span> <span class="syn-str">"Engenheiro de Software AI"</span><span class="syn-punct">,</span>' },
-  { type: 'code', text: '  stack<span class="syn-punct">:</span> <span class="syn-punct">[</span><span class="syn-str">"Python"</span><span class="syn-punct">,</span> <span class="syn-str">"Node"</span><span class="syn-punct">,</span> <span class="syn-str">"React"</span><span class="syn-punct">,</span> <span class="syn-str">"Solidity"</span><span class="syn-punct">],</span>' },
-  { type: 'code', text: '  foco<span class="syn-punct">:</span> <span class="syn-str">"Dados × IA × <span class="syn-mint">Cripto</span>"</span><span class="syn-punct">,</span>' },
+  { type: 'code', text: '  cargo<span class="syn-punct">:</span> <span class="syn-str">"Profissional de Implementações de AI"</span><span class="syn-punct">,</span>' },
+  { type: 'code', text: '  stack<span class="syn-punct">:</span> <span class="syn-punct">[</span><span class="syn-str">"Python"</span><span class="syn-punct">,</span> <span class="syn-str">"Node"</span><span class="syn-punct">,</span> <span class="syn-str">"React"</span><span class="syn-punct">,</span> <span class="syn-str">"LLMs"</span><span class="syn-punct">],</span>' },
+  { type: 'code', text: '  foco<span class="syn-punct">:</span> <span class="syn-str">"<span class="syn-mint">AI</span> × Dados × Automação"</span><span class="syn-punct">,</span>' },
   { type: 'code', text: '  status<span class="syn-punct">:</span> <span class="syn-str">"building..."</span>' },
   { type: 'code', text: '<span class="syn-punct">};</span>' },
   { type: 'spacer' },
@@ -71,7 +71,7 @@ export function renderHeroTerminal() {
             <span class="hero-ide-prompt-cursor"></span>
           </div>
           <div class="hero-ide-shortcuts">
-            ${Object.keys(COMMANDS).filter(k => COMMANDS[k].route).map(k => `
+            ${Object.keys(COMMANDS).filter(k => COMMANDS[k].route && k !== 'crypto').map(k => `
               <button class="hero-ide-shortcut" data-cmd="${k}">
                 <span class="hero-ide-shortcut-key">⌘</span>${k}
               </button>

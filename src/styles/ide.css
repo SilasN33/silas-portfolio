@@ -657,6 +657,28 @@ body {
     pointer-events: none;
 }
 
+.crypto-hero-art {
+    margin: 0 auto 36px;
+    max-width: 760px;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.crypto-hero-art img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-glass);
+    box-shadow: 0 24px 60px -24px rgba(74, 222, 128, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.04);
+    background: var(--bg-secondary);
+}
+
+@media (max-width: 720px) {
+    .crypto-hero-art { max-width: 100%; margin-bottom: 28px; }
+}
+
 .crypto-hero-tag {
     display: inline-flex;
     align-items: center;

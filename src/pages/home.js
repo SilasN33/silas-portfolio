@@ -18,21 +18,18 @@ export function renderHome() {
               <span class="hero-cursor"></span>
             </h1>
             <p class="hero-title reveal reveal-delay-2">
-              <span class="syn-key">function</span> <span class="syn-fn">build</span>(<span class="syn-mint">dados × ia × cripto</span>)
+              <span class="syn-key">function</span> <span class="syn-fn">implement</span>(<span class="syn-mint">ai × dados × automação</span>)
             </p>
             <p class="hero-description reveal reveal-delay-3">
-              Construindo sistemas de dados, ferramentas de automação e software assistido por IA —
-              com um pé firme na fronteira on-chain.
+              Profissional de implementações de IA — projeto e construo sistemas de software assistido por IA,
+              agents, pipelines de dados e automações que rodam em produção e geram impacto real.
             </p>
             <div class="hero-cta reveal reveal-delay-4">
               <a href="#/projects" class="btn btn-primary" id="cta-projects">
                 <span>ver projetos</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-7-7l7 7-7 7"/></svg>
               </a>
-              <a href="#/crypto" class="btn btn-mint" id="cta-crypto">
-                <span>crypto.log</span>
-              </a>
-              <a href="#/contact" class="btn btn-secondary" id="cta-contact">fale comigo</a>
+              <a href="#/contact" class="btn btn-mint" id="cta-contact">fale comigo</a>
             </div>
             <div class="social-icons reveal reveal-delay-5">
               <a href="https://github.com/silasneto" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub" id="hero-github">

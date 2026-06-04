@@ -8,17 +8,26 @@ export function renderCrypto() {
       <!-- Hero -->
       <section class="crypto-hero">
         <div class="container">
-          <div class="crypto-hero-tag reveal">
+          <figure class="crypto-hero-art reveal">
+            <img
+              src="/brand/section-crypto.webp"
+              alt="Terminal crypto.log em tail -f mostrando transações on-chain ao vivo"
+              width="1600" height="1073"
+              loading="eager"
+              decoding="async"
+            />
+          </figure>
+          <div class="crypto-hero-tag reveal reveal-delay-1">
             <span class="crypto-hero-tag-dot"></span>
             crypto.log · tail -f
           </div>
-          <h1 class="crypto-hero-title reveal reveal-delay-1">
+          <h1 class="crypto-hero-title reveal reveal-delay-2">
             <span class="syn-comment">// </span>onde <span class="gradient-text-crypto">engenharia</span> encontra <span class="gradient-text-crypto">capital programável</span>.
           </h1>
-          <p class="crypto-hero-sub reveal reveal-delay-2">
+          <p class="crypto-hero-sub reveal reveal-delay-3">
             Trajetória, tese atual e projetos técnicos que construí na fronteira entre código, on-chain e mercado.
           </p>
-          <div class="crypto-hero-stats reveal reveal-delay-3">
+          <div class="crypto-hero-stats reveal reveal-delay-4">
             <div class="crypto-stat">
               <div class="crypto-stat-value">2017</div>
               <div class="crypto-stat-label">primeiro satoshi</div>
