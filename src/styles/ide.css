@@ -665,7 +665,8 @@ body {
     z-index: 1;
 }
 
-.crypto-hero-art img {
+.crypto-hero-art img,
+.crypto-hero-art video {
     width: 100%;
     height: auto;
     display: block;
@@ -674,6 +675,7 @@ body {
     box-shadow: 0 24px 60px -24px rgba(74, 222, 128, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.04);
     background: var(--bg-secondary);
 }
+
 
 @media (max-width: 720px) {
     .crypto-hero-art { max-width: 100%; margin-bottom: 28px; }

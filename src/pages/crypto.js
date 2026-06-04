@@ -9,13 +9,15 @@ export function renderCrypto() {
       <section class="crypto-hero">
         <div class="container">
           <figure class="crypto-hero-art reveal">
-            <img
-              src="/brand/section-crypto.webp"
-              alt="Terminal crypto.log em tail -f mostrando transações on-chain ao vivo"
-              width="1600" height="1073"
-              loading="eager"
-              decoding="async"
-            />
+            <video
+              class="crypto-hero-art-video"
+              src="/brand/crypto-3d-loop.mp4"
+              poster="/brand/concept-3d-production.webp"
+              width="1920" height="1080"
+              autoplay muted loop playsinline
+              preload="metadata"
+              aria-label="Loop 3D animado de uma linha de produção de tokens — esteira de vidro com braços robóticos montando tokens e painéis holográficos exibindo diagramas de smart contracts"
+            ></video>
           </figure>
           <div class="crypto-hero-tag reveal reveal-delay-1">
             <span class="crypto-hero-tag-dot"></span>
@@ -179,5 +181,10 @@ export function renderCrypto() {
 }
 
 export function initCrypto() {
-  // Reveal handled globally by initScrollReveal in main.js
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.crypto-hero-art-video').forEach(v => {
+      v.removeAttribute('autoplay');
+      v.pause();
+    });
+  }
 }
