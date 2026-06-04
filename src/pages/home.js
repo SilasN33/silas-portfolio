@@ -3,30 +3,36 @@
 // ============================================
 
 import { mountSkillsPreview, unmountSkillsPreview } from '../components/skills/previewMount.jsx';
+import { renderHeroTerminal, initHeroTerminal } from '../components/hero-terminal.js';
 
 export function renderHome() {
   return `
     <div class="page-enter">
-      <!-- Hero Section -->
-      <section class="hero" id="hero-section">
-        <div class="hero-glow hero-glow--purple"></div>
-        <div class="hero-glow hero-glow--blue"></div>
+      <!-- Hero: Terminal-as-OS centerpiece -->
+      <section class="hero hero--ide" id="hero-section">
         <div class="container">
-          <div class="hero-content">
-            <p class="hero-greeting reveal">Olá, eu sou</p>
-            <h1 class="hero-name gradient-text reveal reveal-delay-1">Silas Neto</h1>
-            <p class="hero-title reveal reveal-delay-2">Engenheiro de Software AI</p>
-            <p class="hero-subtitle reveal reveal-delay-3">Especialista em Dados & Automação</p>
-            <p class="hero-description reveal reveal-delay-4">
-              Construindo sistemas de dados, ferramentas de automação e software assistido por IA. 
-              Apaixonado por transformar problemas complexos em soluções elegantes e escaláveis.
+          <div class="hero-intro">
+            <p class="hero-greeting reveal"><span class="syn-comment">// olá, eu sou</span></p>
+            <h1 class="hero-name reveal reveal-delay-1">
+              Silas <span class="gradient-text">Neto</span>
+              <span class="hero-cursor"></span>
+            </h1>
+            <p class="hero-title reveal reveal-delay-2">
+              <span class="syn-key">function</span> <span class="syn-fn">build</span>(<span class="syn-mint">dados × ia × cripto</span>)
+            </p>
+            <p class="hero-description reveal reveal-delay-3">
+              Construindo sistemas de dados, ferramentas de automação e software assistido por IA —
+              com um pé firme na fronteira on-chain.
             </p>
             <div class="hero-cta reveal reveal-delay-4">
               <a href="#/projects" class="btn btn-primary" id="cta-projects">
-                <span>Ver Projetos</span>
+                <span>ver projetos</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-7-7l7 7-7 7"/></svg>
               </a>
-              <a href="#/contact" class="btn btn-secondary" id="cta-contact">Fale Comigo</a>
+              <a href="#/crypto" class="btn btn-mint" id="cta-crypto">
+                <span>crypto.log</span>
+              </a>
+              <a href="#/contact" class="btn btn-secondary" id="cta-contact">fale comigo</a>
             </div>
             <div class="social-icons reveal reveal-delay-5">
               <a href="https://github.com/silasneto" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub" id="hero-github">
@@ -35,30 +41,12 @@ export function renderHome() {
               <a href="https://linkedin.com/in/silasneto" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn" id="hero-linkedin">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
               </a>
-              <a href="mailto:silas@example.com" class="social-icon" aria-label="Email" id="hero-email">
+              <a href="mailto:silasbortneto@gmail.com" class="social-icon" aria-label="Email" id="hero-email">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
               </a>
             </div>
           </div>
-          <div class="hero-visual">
-            <div class="hero-terminal">
-              <div class="terminal-header">
-                <span class="terminal-dot terminal-dot--red"></span>
-                <span class="terminal-dot terminal-dot--yellow"></span>
-                <span class="terminal-dot terminal-dot--green"></span>
-                <span class="terminal-title">silas@dev ~ /portfolio</span>
-              </div>
-              <div class="terminal-body">
-                <div class="terminal-line"><span class="terminal-prompt">const</span> <span class="terminal-keyword">engenheiro</span> = {</div>
-                <div class="terminal-line">&nbsp;&nbsp;nome: <span class="terminal-string">"Silas Neto"</span>,</div>
-                <div class="terminal-line">&nbsp;&nbsp;cargo: <span class="terminal-string">"Engenheiro de Software AI"</span>,</div>
-                <div class="terminal-line">&nbsp;&nbsp;stack: [<span class="terminal-string">"Python"</span>, <span class="terminal-string">"Node"</span>, <span class="terminal-string">"React"</span>],</div>
-                <div class="terminal-line">&nbsp;&nbsp;foco: <span class="terminal-string">"Dados × IA × Automação"</span>,</div>
-                <div class="terminal-line">&nbsp;&nbsp;construindo: <span class="terminal-string">"o futuro"</span></div>
-                <div class="terminal-line">};<span class="terminal-cursor"></span></div>
-              </div>
-            </div>
-          </div>
+          ${renderHeroTerminal()}
         </div>
       </section>
 
@@ -151,9 +139,10 @@ export function renderHome() {
 }
 
 export function initHome() {
+  initHeroTerminal();
+
   const el = document.getElementById('skills-preview-react-root');
-  if (!el) return;
-  mountSkillsPreview(el);
+  if (el) mountSkillsPreview(el);
 
   const cleanup = () => {
     unmountSkillsPreview();

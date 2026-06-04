@@ -14,26 +14,44 @@
 
     /* Accents */
     --accent-purple: #7c3aed;
+    --accent-purple-light: #a78bfa;
     --accent-blue: #3b82f6;
+    --accent-blue-light: #60a5fa;
+    --accent-mint: #4ADE80;
+    --accent-mint-light: #86efac;
     --accent-red: #ef4444;
+    --accent-amber: #fbbf24;
     --accent-gradient: linear-gradient(135deg, #7c3aed, #3b82f6);
     --accent-gradient-reverse: linear-gradient(135deg, #3b82f6, #7c3aed);
     --accent-gradient-text: linear-gradient(135deg, #a78bfa, #60a5fa);
+    --accent-gradient-crypto: linear-gradient(135deg, #4ADE80, #60a5fa);
+
+    /* Syntax (terminal) */
+    --syntax-keyword: #a78bfa;
+    --syntax-string: #60a5fa;
+    --syntax-number: #fbbf24;
+    --syntax-fn: #4ADE80;
+    --syntax-comment: #475569;
+    --syntax-punct: #64748b;
 
     /* Text */
     --text-primary: #f1f5f9;
     --text-secondary: #94a3b8;
     --text-muted: #64748b;
+    --text-mono: #cbd5e1;
 
     /* Borders */
     --border-glass: rgba(255, 255, 255, 0.08);
     --border-glass-hover: rgba(255, 255, 255, 0.15);
+    --border-mint: rgba(74, 222, 128, 0.25);
 
     /* Shadows & Glows */
     --glow-purple: 0 0 30px rgba(124, 58, 237, 0.25);
     --glow-blue: 0 0 30px rgba(59, 130, 246, 0.25);
+    --glow-mint: 0 0 30px rgba(74, 222, 128, 0.25);
     --glow-purple-intense: 0 0 50px rgba(124, 58, 237, 0.4);
     --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --shadow-ide: 0 24px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.06);
 
     /* Radii */
     --radius-sm: 8px;
@@ -49,6 +67,12 @@
 
     /* Fonts */
     --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+
+    /* IDE shell */
+    --ide-sidebar-w: 240px;
+    --ide-tab-h: 36px;
+    --ide-statusbar-h: 26px;
 
     /* Transitions */
     --transition-fast: 0.2s ease;

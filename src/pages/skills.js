@@ -1,8 +1,9 @@
 // ============================================
-// SKILLS PAGE
+// SKILLS PAGE — Terminal-as-OS reskin
 // ============================================
 
 import { mountSkillsExperience, unmountSkillsExperience } from '../components/skills/mount.jsx';
+import { renderPageHeader } from '../components/page-header.js';
 
 const TECH_STACK = [
   { name: 'React', icon: '⚛️' },
@@ -17,26 +18,37 @@ const TECH_STACK = [
 
 export function renderSkills() {
   return `
-    <div class="page-enter" style="padding-top: 100px;">
-      <section class="section" style="padding-top: 40px;">
+    <div class="page-enter">
+      <section class="section" style="padding-top: 56px; padding-bottom: 32px;">
         <div class="container">
-          <div class="section-header">
-            <p class="section-label reveal">Capacidades</p>
-            <h1 class="section-title reveal">Habilidades & <span class="gradient-text">Expertise</span></h1>
-            <p class="section-subtitle reveal">Um mapa interativo das áreas em que atuo — clique numa categoria para explorar</p>
-          </div>
+          ${renderPageHeader({
+            file: 'skills',
+            ext: 'json',
+            label: '03 — capacidades',
+            title: 'Habilidades & <span class="gradient-text">expertise</span>',
+            sub: 'Mapa interativo das áreas em que atuo. Clique numa categoria pra explorar.',
+            cmd: 'cat skills.json | jq .',
+          })}
+        </div>
+      </section>
 
-          <!-- Tech Stack Row -->
-          <div class="tech-stack-row reveal">
+      <!-- Tech stack chips (mono) -->
+      <section class="section" style="padding-top: 0; padding-bottom: 32px;">
+        <div class="container">
+          <div class="skills-stack-row reveal">
             ${TECH_STACK.map(t => `
-              <div class="tech-item">
-                <span class="tech-item-icon">${t.icon}</span>
-                <span class="tech-item-name">${t.name}</span>
+              <div class="skills-stack-chip">
+                <span class="skills-stack-chip-icon">${t.icon}</span>
+                <span class="skills-stack-chip-name">${t.name}</span>
               </div>
             `).join('')}
           </div>
+        </div>
+      </section>
 
-          <!-- React Island: Skills Radar Experience -->
+      <!-- React Island: Skills Radar Experience -->
+      <section class="section" style="padding-top: 0;">
+        <div class="container">
           <div id="skills-react-root" class="reveal" aria-label="Mapa interativo de habilidades"></div>
         </div>
       </section>
@@ -49,7 +61,6 @@ export function initSkills() {
   if (!el) return;
   mountSkillsExperience(el);
 
-  // Cleanup when leaving the route (hash change)
   const cleanup = () => {
     unmountSkillsExperience();
     window.removeEventListener('hashchange', cleanup);

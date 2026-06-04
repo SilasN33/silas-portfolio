@@ -25,3 +25,6 @@ dist-ssr
 
 # Playwright MCP testing residue
 .playwright-mcp
+
+# Original-resolution brand sources (regenerable via HiggsField; keep optimized variants in git)
+public/brand/*-original-*.png

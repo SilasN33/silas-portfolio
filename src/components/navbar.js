@@ -1,36 +1,65 @@
 // ============================================
-// NAVBAR COMPONENT
+// IDE-STYLE NAVBAR — editor tabs
 // ============================================
 
 const NAV_ITEMS = [
-  { label: 'Início', hash: '#/' },
-  { label: 'Sobre', hash: '#/about' },
-  { label: 'Projetos', hash: '#/projects' },
-  { label: 'Habilidades', hash: '#/skills' },
-  { label: 'Contato', hash: '#/contact' },
+  { label: 'home',     ext: 'md',   hash: '#/' },
+  { label: 'about',    ext: 'md',   hash: '#/about' },
+  { label: 'projects', ext: 'tsx',  hash: '#/projects' },
+  { label: 'skills',   ext: 'json', hash: '#/skills' },
+  { label: 'crypto',   ext: 'log',  hash: '#/crypto' },
+  { label: 'contact',  ext: 'md',   hash: '#/contact' },
 ];
+
+const EXT_COLOR = {
+  md:   'var(--accent-blue-light)',
+  tsx:  'var(--accent-purple-light)',
+  json: 'var(--accent-amber)',
+  log:  'var(--accent-mint)',
+};
+
+function renderTab(item, currentHash) {
+  const isActive = currentHash === item.hash;
+  const color = EXT_COLOR[item.ext] || 'var(--text-secondary)';
+  return `
+    <a href="${item.hash}" class="ide-tab${isActive ? ' is-active' : ''}" data-hash="${item.hash}">
+      <span class="ide-tab-dot" style="background:${color};box-shadow:0 0 6px ${color}"></span>
+      <span class="ide-tab-name">${item.label}</span><span class="ide-tab-ext" style="color:${color}">.${item.ext}</span>
+      ${isActive ? '<span class="ide-tab-close" aria-hidden="true">×</span>' : ''}
+    </a>
+  `;
+}
 
 export function renderNavbar() {
   const currentHash = window.location.hash || '#/';
   return `
-    <div class="navbar" id="main-navbar">
-      <div class="container">
-        <a href="#/" class="nav-logo">SN</a>
-        <div class="nav-links" id="nav-desktop-links">
-          ${NAV_ITEMS.map(item => `
-            <a href="${item.hash}" class="${currentHash === item.hash ? 'active' : ''}">${item.label}</a>
-          `).join('')}
+    <div class="ide-chrome" id="main-navbar">
+      <div class="ide-titlebar">
+        <div class="ide-titlebar-left">
+          <span class="ide-traffic ide-traffic--red"></span>
+          <span class="ide-traffic ide-traffic--yellow"></span>
+          <span class="ide-traffic ide-traffic--green"></span>
         </div>
-        <div class="nav-hamburger" id="nav-hamburger" aria-label="Alternar menu">
-          <span></span>
-          <span></span>
-          <span></span>
+        <div class="ide-titlebar-center">
+          <span class="ide-titlebar-path">silas@portfolio</span>
+          <span class="ide-titlebar-sep">—</span>
+          <span class="ide-titlebar-branch">⎇ main</span>
+        </div>
+        <div class="ide-titlebar-right">
+          <a href="#/" class="ide-logo" aria-label="Home">
+            <span class="ide-logo-bracket">[</span>SN<span class="ide-logo-bracket">]</span>
+          </a>
         </div>
       </div>
-      <div class="nav-mobile" id="nav-mobile">
-        ${NAV_ITEMS.map(item => `
-          <a href="${item.hash}" class="${currentHash === item.hash ? 'active' : ''}">${item.label}</a>
-        `).join('')}
+      <div class="ide-tabs" id="ide-tabs-desktop">
+        ${NAV_ITEMS.map(item => renderTab(item, currentHash)).join('')}
+        <div class="ide-tabs-tail"></div>
+      </div>
+      <div class="ide-hamburger" id="nav-hamburger" aria-label="Alternar menu">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="ide-mobile" id="nav-mobile">
+        ${NAV_ITEMS.map(item => renderTab(item, currentHash)).join('')}
       </div>
     </div>
   `;
@@ -48,7 +77,6 @@ export function initNavbar() {
     });
   }
 
-  // Close mobile menu on link click
   if (mobile) {
     mobile.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
@@ -58,23 +86,16 @@ export function initNavbar() {
     });
   }
 
-  // Scroll effect
-  let lastScroll = 0;
   window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    if (navbar) {
-      navbar.classList.toggle('scrolled', scrollY > 50);
-    }
-    lastScroll = scrollY;
+    if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 50);
   });
 
-  // Update active state
   updateNavActive();
 }
 
 export function updateNavActive() {
   const currentHash = window.location.hash || '#/';
-  document.querySelectorAll('.nav-links a, .nav-mobile a').forEach(a => {
-    a.classList.toggle('active', a.getAttribute('href') === currentHash);
+  document.querySelectorAll('.ide-tab').forEach(a => {
+    a.classList.toggle('is-active', a.getAttribute('href') === currentHash);
   });
 }

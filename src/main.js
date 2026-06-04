@@ -3,12 +3,14 @@
 // ============================================
 
 import { renderNavbar, initNavbar, updateNavActive } from './components/navbar.js';
+import { renderStatusBar, initStatusBar } from './components/statusbar.js';
 import { renderFooter } from './components/footer.js';
 import { initParticles } from './components/particles.js';
 import { renderHome, initHome } from './pages/home.js';
 import { renderAbout, initAbout } from './pages/about.js';
 import { renderProjects, initProjects } from './pages/projects.js';
 import { renderSkills, initSkills } from './pages/skills.js';
+import { renderCrypto, initCrypto } from './pages/crypto.js';
 import { renderContact, initContact } from './pages/contact.js';
 
 // --- Route Definitions ---
@@ -17,6 +19,7 @@ const routes = {
   '#/about': { render: renderAbout, init: initAbout, title: 'Sobre — Silas Neto' },
   '#/projects': { render: renderProjects, init: initProjects, title: 'Projetos — Silas Neto' },
   '#/skills': { render: renderSkills, init: initSkills, title: 'Habilidades — Silas Neto' },
+  '#/crypto': { render: renderCrypto, init: initCrypto, title: 'Crypto — Silas Neto' },
   '#/contact': { render: renderContact, init: initContact, title: 'Contato — Silas Neto' },
 };
 
@@ -72,6 +75,12 @@ function init() {
 
   navbar.outerHTML = renderNavbar();
   footer.outerHTML = renderFooter();
+
+  // Mount IDE status bar (fixed bottom)
+  const statusBar = document.createElement('div');
+  statusBar.innerHTML = renderStatusBar();
+  document.body.appendChild(statusBar.firstElementChild);
+  initStatusBar();
 
   // Initialize navbar
   initNavbar();

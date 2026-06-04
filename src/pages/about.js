@@ -1,58 +1,100 @@
 // ============================================
-// ABOUT PAGE
+// ABOUT PAGE — Terminal-as-OS reskin
 // ============================================
 
 import { mountProcess, unmountProcess } from '../components/process/processMount.jsx';
+import { renderPageHeader } from '../components/page-header.js';
+
+const TIMELINE = [
+  {
+    range: '2021.08 → 2022.02',
+    role: 'Estagiário de Infraestrutura',
+    company: 'Ardagh Group',
+    desc: 'Primeira experiência profissional. Dashboards de monitoramento em Python+SQL, inventário de TI, fundamentos de automação e análise de dados.',
+  },
+  {
+    range: '2022.08 → 2023.11',
+    role: 'Estagiário de Desenvolvimento de Software',
+    company: 'Celcoin',
+    desc: 'Automações em Python+Selenium, dashboards de faturamento em PHP, migração de scripts legados PHP→Python. Foco em reduzir trabalho operacional repetitivo.',
+  },
+  {
+    range: '2023.11 → 2025.01',
+    role: 'Engenheiro de Dados JR',
+    company: 'XP Asset',
+    desc: 'Automação de processos financeiros (renda fixa). Ferramentas em Python+FastAPI, integrações com Azure Blob, pipelines de dados para processamento operacional.',
+  },
+  {
+    range: '2025.03 → 2025.06',
+    role: 'Engenheiro de Dados PL',
+    company: 'GranaTech',
+    desc: 'Dashboards estratégicos em Power BI, arquitetura de dados corporativa, planejamento e implementação de Data Lake com Azure Data Factory.',
+  },
+  {
+    range: '2025 → now',
+    role: 'Engenheiro de Software · Dados & Automação',
+    company: 'Artesanal Investimentos',
+    desc: 'Sistemas de automação em Python pra gestão e monitoramento de fundos estruturados. Pipelines, integrações Excel+Python, PostgreSQL, APIs externas, ferramentas de relatório.',
+  },
+];
 
 export function renderAbout() {
   return `
-    <div class="page-enter" style="padding-top: 100px;">
-      <!-- About Header -->
-      <section class="section" style="padding-top: 40px;">
+    <div class="page-enter">
+      <!-- File header -->
+      <section class="section" style="padding-top: 56px; padding-bottom: 48px;">
         <div class="container">
-          <div class="section-header" style="margin-bottom: 48px;">
-            <p class="section-label reveal">Me Conheça</p>
-            <h1 class="section-title reveal">Sobre <span class="gradient-text">Mim</span></h1>
-          </div>
-          <div class="section-divider"></div>
+          ${renderPageHeader({
+            file: 'about',
+            ext: 'md',
+            label: '00 — readme',
+            title: 'Sobre <span class="gradient-text">mim</span>',
+            sub: 'Engenheiro de Software · Dados × IA × Cripto · construindo sistemas que rodam em produção e geram impacto real.',
+            cmd: 'cat about.md',
+          })}
+        </div>
+      </section>
 
-          <div class="about-grid">
-            <div class="about-image-wrapper reveal">
-              <div class="about-image">
-                <div class="about-image-gradient"></div>
-                <div class="about-image-icon">👨‍💻</div>
-              </div>
-            </div>
-            <div class="about-text">
-              <h3 class="reveal">Quem Sou Eu</h3>
-              <p class="reveal">
-                Sou Silas Neto, Desenvolvedor Full Stack e Engenheiro de Software AI baseado no Brasil. 
-                Sou especializado em construir plataformas de dados, sistemas de automação e produtos 
-                assistidos por IA que resolvem problemas reais em escala.
+      <!-- Quem sou eu -->
+      <section class="section" style="padding-top: 0;">
+        <div class="container">
+          <div class="about-blocks">
+            <article class="about-block reveal">
+              <h2 class="about-block-title">
+                <span class="syn-comment">## </span>quem sou eu
+              </h2>
+              <p>
+                Silas Neto, brasileiro, Full Stack e Engenheiro de Software AI.
+                Construo plataformas de dados, sistemas de automação e produtos assistidos por IA que resolvem
+                problemas reais em escala.
               </p>
-              <p class="reveal">
-                Minha jornada começou com uma profunda curiosidade sobre como os dados fluem através dos 
-                sistemas e como o software pode automatizar processos complexos. Ao longo dos anos, evolui 
-                de construir dashboards e APIs para projetar arquiteturas completas de inteligência de dados 
-                alimentadas por IA.
+              <p>
+                Comecei curioso sobre como dados fluem entre sistemas e como software pode automatizar processos complexos.
+                Evoluí de dashboards e APIs pra desenhar arquiteturas inteiras de inteligência de dados com IA.
               </p>
+            </article>
 
-              <h3 class="reveal">O Que Me Motiva</h3>
-              <p class="reveal">
-                Acredito no poder do software bem arquitetado para transformar negócios. Seja um pipeline 
-                ETL processando milhões de registros, um agente de IA automatizando tarefas repetitivas ou 
-                um dashboard analítico em tempo real orientando decisões — sou apaixonado por construir 
-                sistemas que geram impacto real.
+            <article class="about-block reveal">
+              <h2 class="about-block-title">
+                <span class="syn-comment">## </span>o que me move
+              </h2>
+              <p>
+                Software bem arquitetado transforma negócio. Pipeline ETL processando milhões de registros,
+                agente de IA automatizando tarefas, dashboard em tempo real guiando decisão —
+                sou apaixonado por construir sistemas que entregam.
               </p>
+            </article>
 
-              <h3 class="reveal">Minha Abordagem</h3>
-              <p class="reveal">
-                Combino rigor de engenharia com pensamento empreendedor. Não apenas escrevo código — 
-                penso no produto, no usuário e no problema de negócio. Meu stack abrange Python, Node.js, 
-                React, PostgreSQL e ferramentas modernas de IA, permitindo que eu atue em todo o espectro, 
-                desde engenharia de dados até entrega frontend.
+            <article class="about-block reveal">
+              <h2 class="about-block-title">
+                <span class="syn-comment">## </span>minha abordagem
+              </h2>
+              <p>
+                Rigor de engenharia + pensamento empreendedor. Não só escrevo código — penso no produto,
+                no usuário e no problema de negócio.
+                Stack: Python, Node, React, PostgreSQL, ferramentas modernas de IA, e cripto on-chain.
               </p>
-            </div>
+            </article>
           </div>
         </div>
       </section>
@@ -61,79 +103,37 @@ export function renderAbout() {
       <section class="section" style="background: var(--bg-secondary);">
         <div class="container">
           <div class="section-header">
-            <p class="section-label reveal">Minha Jornada</p>
-            <h2 class="section-title reveal">Linha do <span class="gradient-text">Tempo</span></h2>
+            <p class="section-label reveal">// 01 — git log --reverse</p>
+            <h2 class="section-title reveal">Linha do <span class="gradient-text">tempo</span></h2>
+            <p class="section-subtitle reveal">Cada role moldou um pedaço diferente do que eu construo hoje.</p>
           </div>
-          <div class="timeline">
-            <div class="timeline-item reveal">
-              <div class="timeline-dot"></div>
-              <p class="timeline-date">Ago 2021 – Fev 2022</p>
-              <h3 class="timeline-title">Ardagh Group — Estagiário de Infraestrutura</h3>
-              <p class="timeline-desc">
-                Primeira experiência profissional voltada para infraestrutura de TI e monitoramento de sistemas corporativos. 
-                Desenvolvi dashboards internos para monitoramento de linhas telefônicas e indicadores operacionais utilizando Python e SQL. 
-                Realizei manutenção de inventário de equipamentos de TI e apoiei operações de infraestrutura corporativa. 
-                Essa experiência introduziu conceitos fundamentais de automação, análise de dados e monitoramento que direcionaram minha carreira.
-              </p>
-            </div>
-            <div class="timeline-item reveal">
-              <div class="timeline-dot"></div>
-              <p class="timeline-date">Ago 2022 – Nov 2023</p>
-              <h3 class="timeline-title">Celcoin — Estagiário de Desenvolvimento de Software</h3>
-              <p class="timeline-desc">
-                Atuação focada em automação de processos e ferramentas de análise de dados para equipes operacionais. 
-                Construí automações com Python e Selenium, criei dashboards de faturamento em PHP 
-                e migrei scripts legados de PHP para Python, melhorando a manutenção. 
-                Alcancei redução significativa de tarefas operacionais repetitivas e melhorei a confiabilidade dos processos internos.
-              </p>
-            </div>
-            <div class="timeline-item reveal">
-              <div class="timeline-dot"></div>
-              <p class="timeline-date">Nov 2023 – Jan 2025</p>
-              <h3 class="timeline-title">XP Asset — Engenheiro de Dados JR</h3>
-              <p class="timeline-desc">
-                Atuação focada em automação de processos financeiros, engenharia de dados e integração de sistemas para operações de renda fixa. 
-                Construí ferramentas de automação com Python e FastAPI para processamento de dados financeiros. 
-                Implementei integrações de dados utilizando Azure Blob Storage para ingestão automática 
-                e desenvolvi pipelines de dados para processamento e armazenamento operacional. 
-                Melhorei significativamente a eficiência operacional e a confiabilidade no processamento de dados financeiros.
-              </p>
-            </div>
-            <div class="timeline-item reveal">
-              <div class="timeline-dot"></div>
-              <p class="timeline-date">Mar 2025 – Jun 2025</p>
-              <h3 class="timeline-title">GranaTech — Engenheiro de Dados PL</h3>
-              <p class="timeline-desc">
-                Liderei o desenvolvimento de dashboards estratégicos em Power BI conectados às áreas de negócio e comercial. 
-                Construí ferramentas de análise e processamento de dados em Python, estruturei a arquitetura de dados corporativa 
-                e planejei/implementei um Data Lake utilizando Azure Data Factory. 
-                Apoiei diretamente a tomada de decisão estratégica através de dashboards analíticos e evolui a arquitetura de dados para escalabilidade.
-              </p>
-            </div>
-            <div class="timeline-item reveal">
-              <div class="timeline-dot"></div>
-              <p class="timeline-date">Atual</p>
-              <h3 class="timeline-title">Artesanal Investimentos — Engenheiro de Software / Especialista em Dados & Automação</h3>
-              <p class="timeline-desc">
-                Construindo soluções de automação e análise de dados para o setor financeiro, 
-                focado na gestão e monitoramento de fundos estruturados. 
-                Desenvolvendo sistemas de automação em Python para processos operacionais críticos, 
-                pipelines de dados, ferramentas de análise financeira e integrações avançadas Excel + Python. 
-                Integrando com bancos de dados PostgreSQL, APIs externas e construindo ferramentas automatizadas 
-                de relatórios e monitoramento operacional em escala.
-              </p>
-            </div>
+
+          <div class="about-timeline">
+            ${TIMELINE.map(item => `
+              <div class="about-timeline-item reveal">
+                <div class="about-timeline-meta">
+                  <span class="about-timeline-range">${item.range}</span>
+                </div>
+                <div class="about-timeline-card">
+                  <div class="about-timeline-card-head">
+                    <h3 class="about-timeline-role">${item.role}</h3>
+                    <span class="about-timeline-company">@ ${item.company}</span>
+                  </div>
+                  <p class="about-timeline-desc">${item.desc}</p>
+                </div>
+              </div>
+            `).join('')}
           </div>
         </div>
       </section>
 
-      <!-- Engineering Process -->
+      <!-- Processo de engenharia (React island) -->
       <section class="section">
         <div class="container">
           <div class="section-header">
-            <p class="section-label reveal">Metodologia</p>
-            <h2 class="section-title reveal">Processo de <span class="gradient-text">Engenharia</span></h2>
-            <p class="section-subtitle reveal">Uma abordagem sistemática para construir sistemas confiáveis e escaláveis</p>
+            <p class="section-label reveal">// 02 — metodologia</p>
+            <h2 class="section-title reveal">Processo de <span class="gradient-text">engenharia</span></h2>
+            <p class="section-subtitle reveal">Abordagem sistemática pra construir sistemas confiáveis e escaláveis.</p>
           </div>
           <div id="process-react-root" class="reveal" aria-label="Pipeline do processo de engenharia"></div>
         </div>
