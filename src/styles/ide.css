@@ -657,28 +657,67 @@ body {
     pointer-events: none;
 }
 
-.crypto-hero-art {
-    margin: 0 auto 36px;
-    max-width: 760px;
-    padding: 0;
-    position: relative;
-    z-index: 1;
+/* --- Hero variant: immersive video background --- */
+.crypto-hero--bg {
+    padding: 140px 0 80px;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
 }
 
-.crypto-hero-art img,
-.crypto-hero-art video {
+.crypto-hero--bg::before { display: none; }
+
+.crypto-hero-bg-video {
+    position: absolute;
+    inset: 0;
     width: 100%;
-    height: auto;
-    display: block;
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--border-glass);
-    box-shadow: 0 24px 60px -24px rgba(74, 222, 128, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.04);
-    background: var(--bg-secondary);
+    height: 100%;
+    object-fit: cover;
+    object-position: center 75%;
+    z-index: 0;
+    pointer-events: none;
+    filter: saturate(120%) contrast(102%) blur(1.5px);
+    transform: scale(1.05);
 }
 
+.crypto-hero-bg-scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse 55% 45% at 50% 45%, rgba(10, 10, 15, 0.55) 0%, rgba(10, 10, 15, 0.78) 70%, rgba(10, 10, 15, 0.92) 100%),
+        linear-gradient(180deg, rgba(10, 10, 15, 0.7) 0%, rgba(10, 10, 15, 0.3) 18%, rgba(10, 10, 15, 0.3) 70%, rgba(10, 10, 15, 1) 100%);
+}
+
+.crypto-hero--bg .container {
+    position: relative;
+    z-index: 2;
+}
+
+.crypto-hero--bg .crypto-hero-title,
+.crypto-hero--bg .crypto-hero-sub {
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6);
+}
+
+.crypto-hero--bg .crypto-hero-tag {
+    background: rgba(10, 10, 15, 0.55);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
 
 @media (max-width: 720px) {
-    .crypto-hero-art { max-width: 100%; margin-bottom: 28px; }
+    .crypto-hero--bg { min-height: 70vh; padding: 100px 0 60px; }
+    .crypto-hero-bg-video { object-position: center 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .crypto-hero-bg-video { display: none; }
+    .crypto-hero--bg {
+        background-image: url('/brand/concept-3d-production.webp');
+        background-size: cover;
+        background-position: center 45%;
+    }
 }
 
 .crypto-hero-tag {

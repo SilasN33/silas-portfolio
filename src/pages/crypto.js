@@ -5,31 +5,30 @@
 export function renderCrypto() {
   return `
     <div class="page-enter">
-      <!-- Hero -->
-      <section class="crypto-hero">
+      <!-- Hero: vídeo 3D como background imersivo -->
+      <section class="crypto-hero crypto-hero--bg">
+        <video
+          class="crypto-hero-bg-video"
+          src="/brand/crypto-3d-loop.mp4"
+          poster="/brand/concept-3d-production.webp"
+          width="1920" height="1080"
+          autoplay muted loop playsinline
+          preload="metadata"
+          aria-hidden="true"
+        ></video>
+        <div class="crypto-hero-bg-scrim"></div>
         <div class="container">
-          <figure class="crypto-hero-art reveal">
-            <video
-              class="crypto-hero-art-video"
-              src="/brand/crypto-3d-loop.mp4"
-              poster="/brand/concept-3d-production.webp"
-              width="1920" height="1080"
-              autoplay muted loop playsinline
-              preload="metadata"
-              aria-label="Loop 3D animado de uma linha de produção de tokens — esteira de vidro com braços robóticos montando tokens e painéis holográficos exibindo diagramas de smart contracts"
-            ></video>
-          </figure>
-          <div class="crypto-hero-tag reveal reveal-delay-1">
+          <div class="crypto-hero-tag reveal">
             <span class="crypto-hero-tag-dot"></span>
             crypto.log · tail -f
           </div>
-          <h1 class="crypto-hero-title reveal reveal-delay-2">
+          <h1 class="crypto-hero-title reveal reveal-delay-1">
             <span class="syn-comment">// </span>onde <span class="gradient-text-crypto">engenharia</span> encontra <span class="gradient-text-crypto">capital programável</span>.
           </h1>
-          <p class="crypto-hero-sub reveal reveal-delay-3">
+          <p class="crypto-hero-sub reveal reveal-delay-2">
             Trajetória, tese atual e projetos técnicos que construí na fronteira entre código, on-chain e mercado.
           </p>
-          <div class="crypto-hero-stats reveal reveal-delay-4">
+          <div class="crypto-hero-stats reveal reveal-delay-3">
             <div class="crypto-stat">
               <div class="crypto-stat-value">2017</div>
               <div class="crypto-stat-label">primeiro satoshi</div>
@@ -182,7 +181,7 @@ export function renderCrypto() {
 
 export function initCrypto() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    document.querySelectorAll('.crypto-hero-art-video').forEach(v => {
+    document.querySelectorAll('.crypto-hero-bg-video').forEach(v => {
       v.removeAttribute('autoplay');
       v.pause();
     });
