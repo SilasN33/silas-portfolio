@@ -6,6 +6,17 @@ import { renderPageHeader } from '../components/page-header.js';
 
 const PROJECTS = [
   {
+    title: 'Aether',
+    desc: 'Terminal de IA para análise gráfica de futuros, ações, forex e cripto: sinais automatizados, gráficos em tempo real e análise com inteligência artificial, com estética de hedge fund — entre o Bloomberg Terminal e o Perplexity.',
+    tags: ['Next.js 15', 'TypeScript', 'Supabase', 'Stripe', 'Claude API', 'TradingView Charts'],
+    category: 'saas',
+    icon: '👻',
+    logo: '/brand/aether-mascot.webp',
+    status: 'building',
+    github: 'https://github.com/SilasN33/aether',
+    demo: '',
+  },
+  {
     title: 'Brasa',
     desc: 'Cockpit de delivery para restaurantes com frota própria: a loja despacha pedidos, motoboys puxam da fila em tempo real e confirmam com foto, e o acerto do mês sai automático — sem comissão de marketplace. Landing 3D interativa com cena React Three Fiber e scroll cinematográfico.',
     tags: ['Next.js', 'TypeScript', 'Supabase', 'React Three Fiber', 'GSAP', 'PWA'],
@@ -60,7 +71,9 @@ function renderProjectCard(p, i) {
     <article class="project-card-v2 reveal reveal-delay-${(i % 4) + 1}" data-category="${p.category}">
       <div class="project-card-v2-head">
         <span class="project-card-v2-file">
-          <span class="project-card-v2-file-icon">${p.icon}</span>
+          ${p.logo
+            ? `<img class="project-card-v2-logo" src="${p.logo}" alt="Logo ${p.title}" width="20" height="20" loading="lazy" />`
+            : `<span class="project-card-v2-file-icon">${p.icon}</span>`}
           <span class="project-card-v2-file-name">${slugify(p.title)}<span class="syn-mint">.tsx</span></span>
         </span>
         <span class="project-card-v2-status" style="color:${statusColor}">
