@@ -6,14 +6,14 @@ import { renderPageHeader } from '../components/page-header.js';
 
 const PROJECTS = [
   {
-    title: 'Moto Entrega',
-    desc: 'App de gestão de entregas para restaurantes: a loja cria pedidos, motoboys puxam da fila, confirmam com foto e recebem relatório mensal automático.',
-    tags: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind', 'PWA'],
+    title: 'Brasa',
+    desc: 'Cockpit de delivery para restaurantes com frota própria: a loja despacha pedidos, motoboys puxam da fila em tempo real e confirmam com foto, e o acerto do mês sai automático — sem comissão de marketplace. Landing 3D interativa com cena React Three Fiber e scroll cinematográfico.',
+    tags: ['Next.js', 'TypeScript', 'Supabase', 'React Three Fiber', 'GSAP', 'PWA'],
     category: 'saas',
-    icon: '🛵',
+    icon: '🔥',
     status: 'live',
     github: 'https://github.com/SilasN33/app-moto-entrega',
-    demo: '',
+    demo: 'https://app-moto-entrega.vercel.app',
   },
   {
     title: 'QG APP',
